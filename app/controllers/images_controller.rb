@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all
+    @images = Image.all.order('updated_at DESC')
   end
 
   # GET /images/1
@@ -12,7 +12,6 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    puts 'what what what'
     @image = Image.new
   end
 
@@ -25,7 +24,7 @@ class ImagesController < ApplicationController
     @image = Image.new(image_params)
 
     if @image.save
-      redirect_to @image, notice: 'Image was successfully created.'
+      redirect_to images_path, notice: 'Image was successfully created.'
     else
       render :new
     end

@@ -2,8 +2,11 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @image.url %>
+  <a href=<%= @image.url %>><%= @image.url %></a>
 </p>
+<div style="width: 100%">
+  <img class="responsive" src=<%= @image.url %> />
+</div>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

@@ -1,11 +1,6 @@
 class Image < ApplicationRecord
-  def new(image_params)
-    puts 'inside image new'
-    puts image_params
-    false
-  end
-
-  def is_valid_id
-    return id > 5
-  end
+  validates :url,
+            presence: true,
+            format: { with: /\A(http(s?):)([\/|.|\w|\s|-])*\.(?:jpg|gif|png)\z/i,
+                      messsage: 'Invalid image url'}
 end
