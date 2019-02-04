@@ -3,7 +3,13 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all.order('updated_at DESC')
+    filter = params[:tag]
+    if filter
+      @images = Image.tagged_with(filter).order(updated_at: :desc)
+      @filter = filter
+    else
+      @images = Image.all.order(updated_at: :desc)
+    end
   end
 
   # GET /images/1

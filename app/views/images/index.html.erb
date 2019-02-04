@@ -5,6 +5,13 @@
 <%= link_to 'New Image', new_image_path, class: "btn btn-primary mb-3 ml-1" %>
 
 <br>
+
+<% if @filter %>
+    Filtered by <span class="font-weight-bold"><%= @filter %></span>
+    <br>
+    <%= link_to 'clear filter', images_path %>
+<% end %>
+
 <div class="row">
     <% @images.each do |image| %>
       <div class="col-lg-4 col-sm-6 col-xs-12">
@@ -14,7 +21,9 @@
               <img class="thumbnail" src=<%= image.url %> />
             </div>
             <div class="col-12">
-              <%= image.tag_list %>
+              <% image.tag_list.each do |tag| %>
+                  <%= link_to tag, images_path(tag: tag) %>
+              <% end %>
             </div>
             <div class="col-12">
               <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-primary mt-2' %>
