@@ -13,5 +13,6 @@
   <img class="responsive" src=<%= @image.url %> />
 </div>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'Edit', edit_image_path(@image), class: 'btn btn-primary mt-2' %>
+<%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mt-2' %>
+

@@ -17,10 +17,10 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create image" do
     assert_difference('Image.count') do
-      post images_url, params: { image: { url: @image.url } }
+      post images_url, params: { image: { url: 'http://www.test.com/example.png'} }
     end
 
-    assert_redirected_to image_url(Image.last)
+    assert_redirected_to images_path
   end
 
   test "should show image" do
@@ -34,7 +34,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update image" do
-    patch image_url(@image), params: { image: { url: @image.url } }
+    patch image_url(@image), params: { image: { url: 'https://www.test.com/example.png' } }
     assert_redirected_to image_url(@image)
   end
 
@@ -44,5 +44,17 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to images_url
+  end
+
+  test "create fails on invalid url" do
+    assert_no_difference('Image.count') do
+      post images_url, params: { image: { url: 'http://www.example.com'} }
+    end
+    assert_no_difference('Image.count') do
+      post images_url, params: { image: { url: 'www.example.com/2/what.png'} }
+    end
+    assert_no_difference('Image.count') do
+      post images_url, params: { image: { url: 'http://www.example.com/my.pdf'} }
+    end
   end
 end
