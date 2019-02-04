@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Url:</strong>
-  <a href=<%= @image.url %>><%= @image.url %></a>
-</p>
+<div>
+  <p>
+    <strong>Url:</strong>
+    <a href=<%= @image.url %>><%= @image.url %></a>
+  </p>
+</div>
+<div>
+  Tags: <%= @image.tag_list %>
+</div>
 <div style="width: 100%">
   <img class="responsive" src=<%= @image.url %> />
 </div>

@@ -8,4 +8,5 @@
 
 20.times do |image|
   Image.create!(url: "https://picsum.photos/#{(image + 2) * 100}/600.jpg")
+
 end
