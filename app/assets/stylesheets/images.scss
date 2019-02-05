@@ -1,0 +1,15 @@
+// Place all the styles related to the Images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  max-width: 400px;
+}

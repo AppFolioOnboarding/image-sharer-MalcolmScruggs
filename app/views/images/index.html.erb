@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Images</h1>
+
+<%= link_to 'New Image', new_image_path, class: "btn btn-primary mb-3 ml-1" %>
+
+<br>
+
+<% if @filter %>
+    Filtered by <span class="font-weight-bold"><%= @filter %></span>
+    <br>
+    <%= link_to 'clear filter', images_path %>
+<% end %>
+
+<div class="row">
+    <% @images.each do |image| %>
+      <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="card my-2">
+          <div class="card-body row p-2">
+            <div class="col-12">
+              <img class="thumbnail" src=<%= image.url %> />
+            </div>
+            <div class="col-12">
+              <% image.tag_list.each do |tag| %>
+                  <%= link_to tag, images_path(tag: tag) %>
+              <% end %>
+            </div>
+            <div class="col-12">
+              <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-primary mt-2' %>
+              <%= link_to 'Show', image, class: 'btn btn-primary mt-2' %>
+              <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mt-2' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>

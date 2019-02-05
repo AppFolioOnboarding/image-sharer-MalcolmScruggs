@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <p>
+    <strong>Url:</strong>
+    <a href=<%= @image.url %>><%= @image.url %></a>
+  </p>
+</div>
+<div>
+  Tags: <%= @image.tag_list %>
+</div>
+<div style="width: 100%">
+  <img class="responsive" src=<%= @image.url %> />
+</div>
+
+<%= link_to 'Edit', edit_image_path(@image), class: 'btn btn-primary mt-2' %>
+<%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mt-2' %>
+
